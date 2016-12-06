@@ -3,7 +3,7 @@
 $(document).ready(function () {
     // console.log("running reformat from ext");
     $("#wagtable").remove();
-    var tableHtml = "<table class='table0' width='800' id='wagtable'><tr><td>date</td> " +
+    var tableHtml = "<table class='xxtable0' style='width:inherit' id='wagtable'><tr><td>date</td> " +
         "<td>cals</td><td>protein</td> <td>carbs</td> <td>fat</td> <td>fiber</td>" +
         "<td>cholest (MG)</td>  <td>sodium (MG)</td> " +
         "<td>sugars</td></tr></table>"
@@ -12,7 +12,7 @@ $(document).ready(function () {
     $("h2.main-title-2").each(function (idx, obj) {
         var dt = $(obj).text();
         var ftr = $(obj).next().find("tfoot tr").clone();
-
+        ftr.css('line-height', '0.9');
         ftr.find("td.first").text(dt).addClass("date");
         ftr.find("td").each(function (tdIdx, tdObj) {
             $(tdObj).text($(tdObj).text().replace(/m?g/, ""));
