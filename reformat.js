@@ -4,9 +4,9 @@ $(document).ready(function () {
     // console.log("running reformat from ext");
     $("#wagtable").remove();
     var tableHtml = "<table class='table0' width='800' id='wagtable'><tr><td>date</td> " +
-        "<td>cals</td> <td>carbs</td> <td>fat</td> " +
-        "<td>protein</td><td>cholest (MG)</td>  <td>sodium (MG)</td> " +
-        "<td>sugars</td><td>fiber</td></tr></table>"
+        "<td>cals</td><td>protein</td> <td>carbs</td> <td>fat</td> <td>fiber</td>" +
+        "<td>cholest (MG)</td>  <td>sodium (MG)</td> " +
+        "<td>sugars</td></tr></table>"
     $("body").prepend(tableHtml);
 
     $("h2.main-title-2").each(function (idx, obj) {
@@ -17,6 +17,16 @@ $(document).ready(function () {
         ftr.find("td").each(function (tdIdx, tdObj) {
             $(tdObj).text($(tdObj).text().replace(/m?g/, ""));
         });
+        var protein = ftr.find("td:nth-child(5)").text();
+        var fat =  ftr.find("td:nth-child(4)").text();
+        var carbs = ftr.find("td:nth-child(3)").text();
+        var fiber = ftr.find("td:nth-child(9)").text();
+        var cholest = ftr.find("td:nth-child(6)").text();
+        ftr.find("td:nth-child(3)").text(protein);
+        ftr.find("td:nth-child(4)").text(carbs);
+        ftr.find("td:nth-child(5)").text(fat);
+        ftr.find("td:nth-child(6)").text(fiber);
+        ftr.find("td:nth-child(9)").text(cholest);
         // console.log(ftr.html());
         $("#wagtable").append(ftr);
     }
